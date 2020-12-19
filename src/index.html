@@ -8,7 +8,28 @@
 	<body>
 		
 		
-		<div id="title_bar"></div>
+		<div id="title_bar">
+			<div id="tabs">
+				<div class="tab button selected" tabindex="-1" id="search">
+					<object data="./svg/add.svg" type="image/svg+xml" width="30" height="30"></object>
+				</div>
+				<!--<div class="tab button" tabindex="-1"><img src="./cars/fiat.png"><p>HELLO WORLD</p><button tabindex="-1"><object data="./svg/close.svg" type="image/svg+xml" width="9" height="9"></object></button></div> -->
+				<button id="add" tabindex="-1">
+					<object data="./svg/add.svg" type="image/svg+xml" width="25" height="25"></object>
+				</button>
+			</div>
+			<div id="window_functions">
+				<button id="minimize" tabindex="-1" onclick="win_minimize()">
+					<object data="./svg/minimize.svg" type="image/svg+xml" width="12" height="12"></object>
+				</button>
+				<button id="maximize" tabindex="-1" onclick="win_maximize()">
+					<object data="./svg/maximize.svg" type="image/svg+xml" width="12" height="12"></object>
+				</button>
+				<button id="close" tabindex="-1" onclick="win_close()">
+					<object data=" ./svg/close.svg" type="image/svg+xml" width="12" height="12"></object>
+				</button>
+			</div>
+		</div>
 
 		<!-- Loader -->
 		<div id="main_loader"></div>

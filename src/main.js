@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -18,7 +18,8 @@ const createWindow = () => {
 		icon: "./ico.png",
 		show: true,
 		webPreferences: {
-			nodeIntegration: true
+			nodeIntegration: true,
+			enableRemoteModule: true
 		}
 	});
 
@@ -27,6 +28,25 @@ const createWindow = () => {
 
 	// Open the DevTools.
 	mainWindow.webContents.openDevTools();
+
+	exports.minimize = () => mainWindow.minimize();
+	exports.maximize = () => {
+        if (mainWindow.isMaximized()) {
+            mainWindow.unmaximize();
+        } else {
+            mainWindow.maximize();
+        }
+	};
+	exports.is_maximized = () => { return mainWindow.isMaximized(); }
+	exports.userdata = () => { return app.getPath("userData"); }
+
+	mainWindow.on('maximize', () => { mainWindow.webContents.send('maximize_reload', true); });
+    mainWindow.on('unmaximize', () => { mainWindow.webContents.send('maximize_reload', false); });
+
+    mainWindow.on('focus', () => { mainWindow.webContents.send('focus', true); });
+    mainWindow.on('blur', () => { mainWindow.webContents.send('focus', false); });
+
+    mainWindow.on('resize', () => { mainWindow.webContents.send('resize'); });
 };
 
 // This method will be called when Electron has finished

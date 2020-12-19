@@ -1,32 +1,149 @@
 :root {
 	--bg-color: #252525;
 	--font-color: #ffffff;
+    --btn: #3a3a3a;
+    --btn-hover: #636363;
 	--title-color: #454545;
-	--title-height: 30px;
+	--title-color-unfocused: #303030;
+	--title-height: 40px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;;
+    --win-btn-hover: #6e6e6e;
+    --win-btn-hover-close: #e23a3a;
+    --win-svg-hover: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+    --win-svg: invert(100%) sepia(0%) saturate(7500%) hue-rotate(67deg) brightness(102%) contrast(101%);
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	font-family: var(--font);
 	padding: 0;
 	margin: 0;
 	color: var(--font-color);
 	background-color: var(--bg-color);
 }
 
+button,
+.button {
+    border-radius: 1px;
+    background-color: var(--btn);
+    border: 0;
+    border-radius: 5px;
+    transition: .5s;
+    width: 30px;
+    height: 30px;
+    -webkit-app-region: no-drag;
+}
+
+button:hover,
+.button:hover {
+    background-color: var(--btn-hover);
+}
+
+button:focus,
+.button:focus {
+    outline: 0;
+    border: 1px solid var(--focus);
+}
+
 #main_loader {
 	position: absolute;
-	left: 0;
-	top: 0;
 	width: 100%;
 	height: 100%;
 	background-color: var(--bg-color);
 }
 
 #title_bar {
+	-webkit-app-region: drag;
 	background-color: var(--title-color);
 	height: var(--title-height);
 	width: 100%;
 	position: absolute;
-	left: 0;
-	top: 0;
+	display: flex;
+}
+
+#tabs {
+    width: calc(100% - 135px);
+    overflow: hidden;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+}
+
+.tab:focus,
+.tab button:focus {
+    border: 0;
+    outline: 0;
+}
+
+.tab:hover,
+#add:hover {
+    background-color: var(--win-btn-hover);
+}
+
+.selected {
+    background-color: var(--tab);
+}
+
+.selected:hover {
+    background-color: var(--tab);
+}
+
+.tab img {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    padding-right: 2px;
+}
+
+.tab p {
+    display: flex;
+    overflow: hidden;
+}
+
+.tab button {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    border-radius: 5px;
+    background-color: #00000000;
+}
+
+.tab button:hover {
+    background-color: var(--btn-hover)
+}
+
+#add {
+    min-width: 30px;
+    padding: 0;
+    background-color: #00000000;
+}
+
+#window_functions {
+    position: absolute;
+    right: 0;
+}
+
+#window_functions button {
+    width: 45px;
+    border-radius: 0;
+    margin-left: -5px;
+    background-color: #00000000;
+    outline: 0;
+	border: 0;
+	transition: .25s;
+}
+
+#window_functions button:hover {
+	background-color: var(--win-btn-hover);
+}
+
+#window_functions #close:hover {
+	background-color: var(--win-btn-hover-close);
+}
+
+#window_functions button object {
+    filter: var(--win-svg);
+    pointer-events: none;
+    user-select: none;
 }
