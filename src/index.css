@@ -1,0 +1,32 @@
+:root {
+	--bg-color: #252525;
+	--font-color: #ffffff;
+	--title-color: #454545;
+	--title-height: 30px;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	padding: 0;
+	margin: 0;
+	color: var(--font-color);
+	background-color: var(--bg-color);
+}
+
+#main_loader {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: var(--bg-color);
+}
+
+#title_bar {
+	background-color: var(--title-color);
+	height: var(--title-height);
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
